@@ -17,7 +17,7 @@ type tauClient struct{
 }
 
 func NewTauClient(ref string) (*tauClient, error){
-	tClient := &tauClient{client: http.DefaultClient}
+	tClient := &tauClient{client: http.DefaultClient, ref: ref}
 	err := tClient.Ping()
 	if err != nil{
 		return nil, err
@@ -84,7 +84,7 @@ func (t *tauClient) GetUser(token *entities.Token) (*entities.User, error){
 	if err != nil{
 		return nil, err
 	}
-	
+
 	req.Header.Add("Authorization", "Bearer " + token.Jwt)
 	response, err := t.client.Do(req)
 	if err != nil{
