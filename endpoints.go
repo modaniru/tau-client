@@ -11,6 +11,7 @@ import (
 	"github.com/modaniru/tau-client/entities"
 )
 
+
 type tauClient struct{
 	client *http.Client
 	ref string
